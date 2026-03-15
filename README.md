@@ -1,1 +1,1 @@
-Here,i'm posting java solution 
+Here,i'm posting java solution
