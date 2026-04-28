@@ -1,35 +1,19 @@
-import java.util.Scanner;
-
-public class ques2 {
-
+class ques2 {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        int[] arr = {1, 2, 2, 3, 3, 3, 4};
+        boolean[] visited = new boolean[arr.length];
 
-        System.out.print("Enter password: ");
-        String password = sc.nextLine();
+        for (int i = 0; i < arr.length; i++) {
+            if (visited[i]) continue;
 
-        try {
-            validate(password);
-            System.out.println("Password is valid.");
-        } catch (IllegalArgumentException e) {
-            System.out.println("Password error: " + e.getMessage());
-        }
-    }
-
-    static void validate(String password) {
-
-        if (password.length() < 6) {
-            throw new IllegalArgumentException(
-                "Password must be at least 6 characters long."
-            );
-        }
-
-        for (int i = 0; i < password.length(); i++) {
-            if (!Character.isDigit(password.charAt(i))) {
-                throw new IllegalArgumentException(
-                    "Password must contain only numbers."
-                );
+            int count = 1;
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[i] == arr[j]) {
+                    count++;
+                    visited[j] = true;
+                }
             }
+            System.out.println(arr[i] + " occurs " + count + " times");
         }
     }
 }
