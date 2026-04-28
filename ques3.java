@@ -1,34 +1,22 @@
-import java.util.Scanner;
-
-public class ques3 {
+class ques3 {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        String[][] booking = new String[1][4];
 
-        System.out.print("Enter password: ");
-        String password = sc.nextLine().trim();
+        booking[0][0] = "10-02-2026";  // Date
+        booking[0][1] = "10AM";        // Start time
+        booking[0][2] = "12PM";        // End time
+        booking[0][3] = "Surbhi";     // Name
 
-        if (password.length() < 8) {
-            System.out.println("Password must be at least 8 characters long");
-            return;
-        }
+        String date = "10-02-2026";
+        String start = "10AM";
+        String end = "12PM";
 
-        // Convert first character to uppercase if needed
-        password = Character.toUpperCase(password.charAt(0)) + password.substring(1);
-
-        boolean hasDigit = false;
-        boolean hasSpecial = false;
-
-        for (char ch : password.toCharArray()) {
-            if (Character.isDigit(ch))
-                hasDigit = true;
-            else if (!Character.isLetterOrDigit(ch))
-                hasSpecial = true;
-        }
-
-        if (hasDigit && hasSpecial) {
-            System.out.println("Valid Password: " + password);
+        if (booking[0][0].equals(date) &&
+            booking[0][1].equals(start) &&
+            booking[0][2].equals(end)) {
+            System.out.println("Room already booked by " + booking[0][3]);
         } else {
-            System.out.println("Password must contain at least one digit and one special character");
+            System.out.println("Room is available");
         }
     }
 }
