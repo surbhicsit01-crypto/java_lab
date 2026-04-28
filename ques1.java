@@ -1,22 +1,19 @@
-import java.util.Scanner;
-
-public class ques1 {
+class ques1 {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        String[] stocks = {"TATA", "INFY"};
+        int[][] prices = {
+            {100, 105, 110},   // TATA prices
+            {200, 210, 215}    // INFY prices
+        };
 
-        // Uppercase to lowercase
-        System.out.print("Enter uppercase string: ");
-        String upper = sc.nextLine();
-        System.out.println("Lowercase: " + upper.toLowerCase());
+        String[] time = {"10AM", "12PM", "2PM"};
 
-        // Lowercase to uppercase
-        System.out.print("Enter lowercase string: ");
-        String lower = sc.nextLine();
-        System.out.println("Uppercase: " + lower.toUpperCase());
-
-        // Remove spaces from sentence
-        System.out.print("Enter a sentence: ");
-        String sentence = sc.nextLine();
-        System.out.println("Without spaces: " + sentence.replace(" ", ""));
+        for (int i = 0; i < stocks.length; i++) {
+            System.out.println("Stock: " + stocks[i]);
+            for (int j = 0; j < time.length; j++) {
+                System.out.println(time[j] + " : " + prices[i][j]);
+            }
+            System.out.println();
+        }
     }
 }
