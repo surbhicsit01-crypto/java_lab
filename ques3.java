@@ -1,38 +1,34 @@
-abstract class Shape {
-    abstract double findArea();
-}
-
-class Square extends Shape {
-    double side;
-
-    Square(double s) {
-        side = s;
-    }
-
-    double findArea() {
-        return side * side;
-    }
-}
-
-class Rectangle extends Shape {
-    double length, breadth;
-
-    Rectangle(double l, double b) {
-        length = l;
-        breadth = b;
-    }
-
-    double findArea() {
-        return length * breadth;
-    }
-}
+import java.util.Scanner;
 
 public class ques3 {
     public static void main(String[] args) {
-        Shape s1 = new Square(5);
-        Shape s2 = new Rectangle(4, 6);
+        Scanner sc = new Scanner(System.in);
 
-        System.out.println("Area of Square: " + s1.findArea());
-        System.out.println("Area of Rectangle: " + s2.findArea());
+        System.out.print("Enter password: ");
+        String password = sc.nextLine().trim();
+
+        if (password.length() < 8) {
+            System.out.println("Password must be at least 8 characters long");
+            return;
+        }
+
+        // Convert first character to uppercase if needed
+        password = Character.toUpperCase(password.charAt(0)) + password.substring(1);
+
+        boolean hasDigit = false;
+        boolean hasSpecial = false;
+
+        for (char ch : password.toCharArray()) {
+            if (Character.isDigit(ch))
+                hasDigit = true;
+            else if (!Character.isLetterOrDigit(ch))
+                hasSpecial = true;
+        }
+
+        if (hasDigit && hasSpecial) {
+            System.out.println("Valid Password: " + password);
+        } else {
+            System.out.println("Password must contain at least one digit and one special character");
+        }
     }
 }
