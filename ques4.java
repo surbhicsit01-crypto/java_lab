@@ -1,34 +1,22 @@
-class Employee {
-    int id;
-    String name;
-    double salary;
-
-    Employee(int i, String n) {
-        id = i;
-        name = n;
-        salary = 0;
-    }
-
-    Employee(int i, String n, double s) {
-        id = i;
-        name = n;
-        salary = s;
-    }
-
-    void display() {
-        System.out.println("ID: " + id);
-        System.out.println("Name: " + name);
-        System.out.println("Salary: " + salary);
-        System.out.println();
-    }
-}
+import java.util.Scanner;
 
 public class ques4 {
     public static void main(String[] args) {
-        Employee e1 = new Employee(101, "Alice");
-        Employee e2 = new Employee(102, "Bob", 45000);
+        Scanner sc = new Scanner(System.in);
 
-        e1.display();
-        e2.display();
+        System.out.print("Enter first string: ");
+        String s1 = sc.nextLine();
+
+        System.out.print("Enter second string: ");
+        String s2 = sc.nextLine();
+
+        char lastChar = s1.charAt(s1.length() - 1);
+        char firstChar = s2.charAt(0);
+
+        if (lastChar == firstChar) {
+            System.out.println("Output: " + s1 + s2);
+        } else {
+            System.out.println("Characters do not match");
+        }
     }
 }
