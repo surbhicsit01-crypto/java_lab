@@ -1,19 +1,50 @@
-class ques2 {
+import java.util.*;
+
+class Multiply {
+
+    int multiply(int a, int b) {
+        return a * b;
+    }
+
+    int multiply(int a, int b, int c) {
+        return a * b * c;
+    }
+
+    int multiply(int[] arr) {
+        int result = 1;
+        for (int i : arr)
+            result *= i;
+        return result;
+    }
+}
+
+public class ques2 {
     public static void main(String[] args) {
-        int[] arr = {1, 2, 2, 3, 3, 3, 4};
-        boolean[] visited = new boolean[arr.length];
+        Scanner sc = new Scanner(System.in);
+        Multiply m = new Multiply();
 
-        for (int i = 0; i < arr.length; i++) {
-            if (visited[i]) continue;
+        ArrayList<Integer> list = new ArrayList<>();
+        System.out.println("Enter numbers (* to stop):");
 
-            int count = 1;
-            for (int j = i + 1; j < arr.length; j++) {
-                if (arr[i] == arr[j]) {
-                    count++;
-                    visited[j] = true;
-                }
-            }
-            System.out.println(arr[i] + " occurs " + count + " times");
+        while (true) {
+            String input = sc.next();
+            if (input.equals("*"))
+                break;
+            list.add(Integer.parseInt(input));
+        }
+
+        if (list.size() == 2) {
+            System.out.println("Method for Two numbers called (Result): "
+                    + m.multiply(list.get(0), list.get(1)));
+        } 
+        else if (list.size() == 3) {
+            System.out.println("Method for Three numbers called (Result): "
+                    + m.multiply(list.get(0), list.get(1), list.get(2)));
+        } 
+        else {
+            int[] arr = list.stream().mapToInt(i -> i).toArray();
+            System.out.println("Method for multiple numbers called (Result): "
+                    + m.multiply(arr));
         }
     }
 }
