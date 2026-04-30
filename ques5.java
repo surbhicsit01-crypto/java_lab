@@ -1,18 +1,19 @@
-class Shape {
-    void about() {
-        System.out.println("This is a Shape");
-    }
-}
-
-class Circle extends Shape {
-    void about() {
-        System.out.println("This is a Circle");
-    }
-}
+import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class ques5 {
     public static void main(String[] args) {
-        Shape s = new Circle(); // Polymorphism
-        s.about();
+        Scanner sc = new Scanner(System.in); 
+
+        System.out.print("Enter Email ID: ");
+        String email = sc.nextLine();
+
+        String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+
+        if (Pattern.matches(regex, email)) {
+            System.out.println("Correct");
+        } else {
+            System.out.println("Incorrect");
+        }
     }
 }
