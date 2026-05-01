@@ -1,27 +1,34 @@
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class ques {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter first string: ");
-        String a = sc.nextLine();
+    static double balance = 5000.0;   // initial balance
 
-        System.out.print("Enter second string: ");
-        String b = sc.nextLine();
+    static void withdraw(double amount) {
 
-        if (a.length() != b.length()) {
-            System.out.println("False");
-            return;
+        if (amount > balance) {
+            throw new IllegalStateException(
+                "Insufficient funds! Available balance: " + balance
+            );
         }
 
-        char[] arr1 = a.toCharArray();
-        char[] arr2 = b.toCharArray();
+        balance -= amount;
+        System.out.println("Withdrawal successful.");
+        System.out.println("Remaining balance: " + balance);
+    }
 
-        Arrays.sort(arr1);
-        Arrays.sort(arr2);
+    public static void main(String[] args) {
 
-        System.out.println(Arrays.equals(arr1, arr2));
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Current Balance: " + balance);
+        System.out.print("Enter amount to withdraw: ");
+        double amount = sc.nextDouble();
+
+        try {
+            withdraw(amount);
+        } catch (IllegalStateException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
