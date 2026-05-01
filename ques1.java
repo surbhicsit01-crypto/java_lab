@@ -2,21 +2,15 @@ import java.util.Scanner;
 
 public class ques1 {
     public static void main(String[] args) {
+        int[] arr = {10, 20, 30, 40, 50};
         Scanner sc = new Scanner(System.in);
 
-        // Uppercase to lowercase
-        System.out.print("Enter uppercase string: ");
-        String upper = sc.nextLine();
-        System.out.println("Lowercase: " + upper.toLowerCase());
-
-        // Lowercase to uppercase
-        System.out.print("Enter lowercase string: ");
-        String lower = sc.nextLine();
-        System.out.println("Uppercase: " + lower.toUpperCase());
-
-        // Remove spaces from sentence
-        System.out.print("Enter a sentence: ");
-        String sentence = sc.nextLine();
-        System.out.println("Without spaces: " + sentence.replace(" ", ""));
+        try {
+            System.out.print("Enter index (0-4): ");
+            int index = sc.nextInt();
+            System.out.println("Element at index " + index + " is: " + arr[index]);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Error: Invalid index entered!");
+        }
     }
 }
