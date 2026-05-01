@@ -3,32 +3,23 @@ import java.util.Scanner;
 public class ques3 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        boolean success = false;
 
-        System.out.print("Enter password: ");
-        String password = sc.nextLine().trim();
+        while (!success) {
+            try {
+                System.out.print("Enter numerator: ");
+                int a = sc.nextInt();
 
-        if (password.length() < 8) {
-            System.out.println("Password must be at least 8 characters long");
-            return;
-        }
+                System.out.print("Enter denominator: ");
+                int b = sc.nextInt();
 
-        // Convert first character to uppercase if needed
-        password = Character.toUpperCase(password.charAt(0)) + password.substring(1);
-
-        boolean hasDigit = false;
-        boolean hasSpecial = false;
-
-        for (char ch : password.toCharArray()) {
-            if (Character.isDigit(ch))
-                hasDigit = true;
-            else if (!Character.isLetterOrDigit(ch))
-                hasSpecial = true;
-        }
-
-        if (hasDigit && hasSpecial) {
-            System.out.println("Valid Password: " + password);
-        } else {
-            System.out.println("Password must contain at least one digit and one special character");
+                int result = a / b;
+                System.out.println("Result: " + result);
+                success = true;
+            } catch (ArithmeticException e) {
+                System.out.println("Error: Division by zero is not allowed.");
+                System.out.println("Please try again.\n");
+            }
         }
     }
 }
